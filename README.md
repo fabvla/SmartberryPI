@@ -1,7 +1,7 @@
 SmartberryPI
 ========
 
-**SmartberryPI** is a simple PHP library for building a task scheduler for Automation and IoT installations based on Raspberry PI.
+**SmartberryPI** is a simple Node.js library for building a task scheduler for Automation and IoT installations based on Raspberry PI.
 
 
 Introduction

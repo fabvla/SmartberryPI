@@ -1,48 +1,63 @@
-var express = require('express'); // Usiamo libreria express per facilitarci il routing // npm install express --save
+/**
+ * Based on
+ * https://hackerstribe.com/2015/node-js-interfacciarsi-ai-pin-gpio-del-raspberry-pi/
+ */
+
+var express = require('express');
 var server = express();
 
-var relay = require('./gpio-onoff.js');
+// load modules
+// var relay = require('./gpio-onoff.js');
+var deviceManager = require('./components/device_manager.js');
+var programUtils = require('./components/program_utils.js');
 
-var config = require('./config.json'); // file di configurazione
+// load configuration file
+var config = require('./config.json');
 
-server.get('/toggle', function (req, res) { // processiamo richiesta get verso /toggle
+//initialize components
+deviceManager.init(config.devices);
 
-  // risposta in JSON
-  res.json(relay.toggle());
 
-});
+/*
+ * server.get('/toggle', function (req, res) { // processiamo richiesta get
+ * verso /toggle
+ *  // risposta in JSON res.json(relay.toggle());
+ * 
+ * });
+ * 
+ * server.get('/on', function (req, res) { // processiamo richiesta get verso
+ * /toggle
+ *  // risposta in JSON res.json(relay.on());
+ * 
+ * });
+ * 
+ * server.get('/off', function (req, res) { // processiamo richiesta get verso
+ * /toggle
+ *  // risposta in JSON res.json(relay.off());
+ * 
+ * });
+ * 
+ * server.get('/get', function (req, res) { // processiamo richiesta get verso
+ * /toggle
+ *  // risposta in JSON res.json(relay.get());
+ * 
+ * });
+ */
 
-server.get('/on', function (req, res) { // processiamo richiesta get verso /toggle
+server.get('/', function(req, res) {
 
-  // risposta in JSON
-  res.json(relay.on());
-
-});
-
-server.get('/off', function (req, res) { // processiamo richiesta get verso /toggle
-
-  // risposta in JSON
-  res.json(relay.off());
-
-});
-
-server.get('/get', function (req, res) { // processiamo richiesta get verso /toggle
-
-  // risposta in JSON
-  res.json(relay.get());
+	res.status(200).send('Welcome to SmartberryPI');
 
 });
 
 // Express route for any other unrecognised incoming requests
 server.get('*', function(req, res) {
-  res.status(404).send('Unrecognised API call');
+	res.status(404).send('Unrecognised API call');
 });
 
-var server = server.listen(config.port, function () { // server in ascolto sulla porta 5000
+// Server listening on port config.port
+var server = server.listen(config.port, function() {
+	var port = server.address().port;
 
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Server Running at http://%s:%s', host, port);
-
+	console.log('SmartberryPI listening on port %s', port);
 });

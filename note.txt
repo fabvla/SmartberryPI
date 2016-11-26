@@ -1,0 +1,18 @@
+def toggle():
+    light = db(db.lights.id==request.args(0,cast=int)).select().first()
+    if light.State:
+        light.update_record(State = False)
+        GPIO.setup(light.OffPin,GPIO.OUTPUT)
+        GPIO.output(light.OffPin,GPIO.ON)
+        time.sleep(1)
+        GPIO.setup(light.OffPin,GPIO.INPUT)
+        
+    else:
+        light.update_record(State = True)
+        GPIO.setup(light.OnPin,GPIO.OUTPUT)
+        GPIO.output(light.OnPin,GPIO.ON)
+        time.sleep(1)
+        GPIO.setup(light.OnPin,GPIO.INPUT)
+
+    db.commit()
+    return redirect(URL('index'))

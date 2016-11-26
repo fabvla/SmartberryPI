@@ -1,8 +1,9 @@
 /**
- * Device Utils
+ * Device Manager
  */
 
 var devices = {};
+
 
 /**
  * Load config.devices and initialize the array setting id and current_status=false

@@ -16,7 +16,14 @@ var config = require('./config.json');
 
 //initialize components
 deviceManager.init(config.devices);
+programUtils.init();
 
+//var programs = programUtils.list();
+//console.log(programs);
+var activeProgram = programUtils.active();
+console.log(activeProgram);
+
+//console.log( programs[0]['device_1'] );
 
 /*
  * server.get('/toggle', function (req, res) { // processiamo richiesta get

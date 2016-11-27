@@ -1,5 +1,5 @@
 /**
- * Program Utils
+ * Programs
  */
 
 var fs = require('fs');

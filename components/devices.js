@@ -1,5 +1,5 @@
 /**
- * Device Manager
+ * Devices
  */
 
 var devices = {};

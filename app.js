@@ -58,6 +58,9 @@ async.series({
 
 
 
+/*
+ * Shutdown procedure
+ */
 
 //(Ctrl + C) - Handler
 if (process.platform === 'win32') {

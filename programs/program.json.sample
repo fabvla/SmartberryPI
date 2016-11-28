@@ -1,37 +1,42 @@
 {
     "device_1": [
-        {"at": "9:50", "status": "on"},
-        {"at": "11:12", "status": "off"},
-        {"at": "12:50", "status": "on"},
-        {"at": "13:20", "status": "off"},
-        {"at": "17:30", "status": "on"}
+        {"at": "9:50", "status": true},
+        {"at": "11:12", "status": false},
+        {"at": "12:50", "status": true},
+        {"at": "13:20", "status": false},
+        {"at": "17:30", "status": true},
+        {"at": "23:59", "status": false}
     ],
     "device_2": [
-        {"at": "9:50", "status": "on"},
-        {"at": "11:12", "status": "off"},
-        {"at": "12:50", "status": "on"},
-        {"at": "13:20", "status": "off"},
-        {"at": "17:30", "status": "on"}
+        {"at": "9:50", "status": true},
+        {"at": "11:12", "status": false},
+        {"at": "12:50", "status": true},
+        {"at": "13:20", "status": false},
+        {"at": "17:30", "status": true},
+        {"at": "23:59", "status": false}
     ],
     "device_3": [
-        {"time": "9:50", "status": "on"},
-        {"time": "11:12", "status": "off"},
-        {"time": "12:50", "status": "on"},
-        {"time": "13:20", "status": "off"},
-        {"time": "17:30", "status": "on"}
+        {"at": "9:50", "status": true},
+        {"at": "11:12", "status": false},
+        {"at": "12:50", "status": true},
+        {"at": "13:20", "status": false},
+        {"at": "17:30", "status": true},
+        {"at": "23:59", "status": false}
     ],
     "device_4": [
-        {"time": "9:50", "status": "on"},
-        {"time": "11:12", "status": "off"},
-        {"time": "12:50", "status": "on"},
-        {"time": "13:20", "status": "off"},
-        {"time": "17:30", "status": "on"}
+        {"at": "9:50", "status": true},
+        {"at": "11:12", "status": false},
+        {"at": "12:50", "status": true},
+        {"at": "13:20", "status": false},
+        {"at": "17:30", "status": true},
+        {"at": "23:59", "status": false}
     ],
     "device_5": [
-        {"time": "9:50", "status": "on"},
-        {"time": "11:12", "status": "off"},
-        {"time": "12:50", "status": "on"},
-        {"time": "13:20", "status": "off"},
-        {"time": "17:30", "status": "on"}
+        {"at": "9:50", "status": true},
+        {"at": "11:12", "status": false},
+        {"at": "12:50", "status": true},
+        {"at": "13:20", "status": false},
+        {"at": "17:30", "status": true},
+        {"at": "23:59", "status": false}
     ]
 }

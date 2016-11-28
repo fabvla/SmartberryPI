@@ -10,6 +10,16 @@ module.exports = function(app, io, devices, programs){
 		res.status(200).json(devices.list());
 	});
 
+	app.get('/api/devices/:id', function (req, res) {		
+		console.log("GET /api/devices");
+		
+		if (typeof req.params.id !== 'undefined'){
+			res.status(200).json(devices.get(req.params.id));
+	  	} else{
+	  		res.status(400).json({status: 'error', error: 'Provide valid device id'});
+		}		
+	});
+	
 	app.get('/api/programs', function (req, res) {
 		console.log("GET /api/programs");
 		res.status(200).json(programs.list());

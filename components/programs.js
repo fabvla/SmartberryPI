@@ -9,10 +9,11 @@ var activeProgram = false;
 
 var programs = [];
 
+
 /**
  * Load programs from programs directory
  */
-exports.init = function() {
+exports.init = function(config) {
 	var files = fs.readdirSync(programsDir);
 
 	// load only .json programs
@@ -28,12 +29,14 @@ exports.init = function() {
 	activeProgram = Object.keys(programs)[randomProgramId];
 };
 
+
 /**
  * Get programs list
  */
 exports.list = function() {
 	return programs;
 };
+
 
 /**
  * Get active program

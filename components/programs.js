@@ -27,6 +27,8 @@ exports.init = function(config) {
 	//set active program randomly
 	randomProgramId = randomInt(0, Object.keys(programs).length);	
 	activeProgram = Object.keys(programs)[randomProgramId];
+	
+	console.log("Loading program:", activeProgram);
 };
 
 

@@ -49,12 +49,12 @@ Device.prototype.timeline = function() {
  */
 Device.prototype.on = function() {
 	if( this._status != true ){
-		console.log("Device switched to ON");
+		console.log("Device", this._id, "on(): switched to ON");
 		this._driver.on();
 		this._status = true;
 	}
 	else{
-		console.log("Device already ON");
+		console.log("Device", this._id, "on(): already ON");
 	}
 };
 
@@ -64,12 +64,12 @@ Device.prototype.on = function() {
  */
 Device.prototype.off = function() {
 	if( this._status != false ){
-		console.log("Device switched to OFF");
+		console.log("Device", this._id, "off(): switched to OFF");
 		this._driver.off();
 		this._status = false;
 	}
 	else{
-		console.log("Device already OFF");
+		console.log("Device", this._id, "off(): already OFF");
 	}
 };
 
@@ -79,12 +79,12 @@ Device.prototype.off = function() {
  */
 Device.prototype.toggle = function() {
 	if( this._status == true ){
-		console.log("Device switched to OFF");
+		console.log("Device", this._id, "toggle(): switched to OFF");
 		this._driver.off();
 		this._status = false;
 	}
 	else{
-		console.log("Device switched to ON");
+		console.log("Device", this._id, "toggle(): switched to ON");
 		this._driver.on();
 		this._status = true;
 	}

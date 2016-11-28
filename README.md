@@ -54,86 +54,100 @@ First of all, configures your devices (each device corresponds to one or two GPI
 
 
 ```
-<?php return [
-        'device_1' => [
-                'name' => 'Lamp 1',
-                'pin' => 21,
-        ],
-        'device_2' => [
-                'name' => 'Lamp 2',
-                'pin' => 22,
-        ],
-        'device_3' => [
-                'name' => 'Table 1',
-                'pin' => 23,
-        ],
-        'device_4' => [
-                'name' => 'Table 2',
-                'pin' => 24,
-        ],
-        'device_5' => [
-                'name' => 'Floor 1',
-                'pin' => 25,
-        ]
-];
+{
+    "port": 5000,
+    "devices": {
+        "device_1": {
+            "name": "Lamp 1",
+            "driver": "remote_onoff_mock",
+            "pin_on": 21,
+            "pin_off": 22
+        },
+        "device_2": {
+            "driver": "remote_onoff_mock",
+            "name": "Lamp 2",
+            "pin_on": 23,
+            "pin_off": 24
+        },
+        "device_3": {
+            "name": "Lamp 3",
+            "driver": "remote_onoff_mock",
+            "pin_on": 25,
+            "pin_off": 26
+        },
+        "device_4": {
+            "name": "Table",
+            "driver": "remote_onoff_mock",
+            "pin_on": 27,
+            "pin_off": 28
+        },
+        "device_5": {
+            "name": "Floor",
+            "driver": "remote_onoff_mock",
+            "pin_on": 29,
+            "pin_off": 30
+        }
+    }
+}
 ```
 
-**Note:** I made a driver for my specific remote controller, and is it possible to specify a different driver for each device. This means that you can control different type of device.
+**Note:** I made a driver for my specific remote controller, and is it possible to specify a different driver for each device. This means that you can control different type of device (ie: a smart plug, an RF433MHz device etc...).
+
 
 Configuring Programs
 ----
 
-You can configure one or more programs, you can see an example on `programs/program.php.sample`.
+You can configure one or more programs, you can see an example on `programs/program.json.sample`.
 
-1. Copy `programs/program.php.sample` to `programs/program_1.php`
-2. Edit `programs/program_1.php` and define for each device one or more timer status.
+1. Copy `programs/program.json.sample` to `programs/program_1.json`
+2. Edit `programs/program_1.json` and define for each device one or more timer status.
 
 You can define one or more programs, if there are many programs, every day one will be choosed randomly.
-For each device you can define via `timelet(time, status)` function, multiple time and pin status.
+For each device you can define multiple time and status in this way `{"at": "9:50", "status": true}`.
 For example, you can define that device_1 is switched "on" at 9:50, switched off at 11:12 and so on.
-Timelets are executed sequentially.
 
-If you want to switch on for all the day one device, you can simply add only one timelet like: `timelet("00:00", "on")`.
+If you want to switch on for all the day one device, you can simply add only one row like: `{"at": "00:00", "status": true},`.
 
 Here an example:
 
 ```
-<?php return [
-        'device_1' => [
-                timelet("9:50", "on"),
-                timelet("11:12", "off"),
-                timelet("12:50", "on"),
-                timelet("13:20", "off"),
-                timelet("17:30", "on"),
-        ],
-        'device_2' => [
-                timelet("9:00", "on"),
-                timelet("10:05", "off"),
-                timelet("12:10", "on"),
-                timelet("13:36", "off"),
-                timelet("17:35", "on"),
-                timelet("21:00", "off"),
-                timelet("21:10", "on"),
-        ],
-        'device_3' => [
-                timelet("9:40", "on"),
-                timelet("11:20", "off"),
-                timelet("13:05", "on"),
-                timelet("16:21", "off"),
-                timelet("18:00", "on"),
-                timelet("18:10", "off"),
-                timelet("19:05", "on"),
-                timelet("20:30", "off"),
-                timelet("21:10", "on"),
-        ],
-        'device_4' => [
-                timelet("19:30", "on"),
-                timelet("20:55", "off"),
-                timelet("21:30", "on"),
-        ],
-        'device_5' => [
-        ]
-];
+{
+    "device_1": [
+        {"at": "9:10", "status": true},
+        {"at": "11:12", "status": false},
+        {"at": "12:50", "status": true},
+        {"at": "13:20", "status": false},
+        {"at": "17:30", "status": true},
+        {"at": "23:59", "status": false}
+    ],
+    "device_2": [
+        {"at": "9:00", "status": true},
+        {"at": "10:05", "status": false},
+        {"at": "12:10", "status": true},
+        {"at": "13:36", "status": false},
+        {"at": "17:35", "status": true},
+        {"at": "21:00", "status": false},
+        {"at": "21:10", "status": true}
+    ],
+    "device_3": [
+        {"at": "9:40", "status": true},
+        {"at": "11:20", "status": false},
+        {"at": "13:05", "status": true},
+        {"at": "16:21", "status": false},
+        {"at": "18:00", "status": true},
+        {"at": "18:10", "status": false},
+        {"at": "19:05", "status": true},
+        {"at": "20:30", "status": false},
+        {"at": "21:10", "status": true}
+    ],
+    "device_4": [
+        {"at": "19:30", "status": true},
+        {"at": "20:55", "status": false},
+        {"at": "21:30", "status": true}
+    ],
+    "device_5": [
+    ]
+}
 ```
 
 
@@ -142,10 +156,10 @@ Web Interface
 
 Connect to your Raspberry PI web server:
 
-`http://raspberry/index.php`
+`http://raspberry/`
 
 to see the schedule status.
 You can also switch ON / OFF the scheduler for the current day.
 
-Every day, when `reset.php` runs, it reset all the switches and re-set the application to default values (active=true).
+Every day, at midnight when reset task runs, it reset all the switches and re-set the application to default values (active=true) and with a new daily program.
 

@@ -35,8 +35,18 @@ module.exports = function(config, devices, programs, _cb) {
 	
 	//reset run every 00:00
 	var resetJob = cron.job("0 0 0 * * *", function(){
-		programs.init();
-	    console.info('Run Reset Job at:', new Date());
+		console.info('Run Reset Job at:', new Date());
+		
+		console.info('Pausing ticker Job.');
+		tickerJob.stop();
+		
+		//re-initialize components
+		console.info('Reinitializing programs and devices.');
+		programs.init(config, devices);
+		devices.init(config, programs.active());
+
+		console.info('Restart ticker Job.');
+		tickerJob.start();
 	}); 
 	resetJob.start();
 }

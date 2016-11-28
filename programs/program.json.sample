@@ -1,36 +1,36 @@
 {
     "device_1": [
-        {"at": "9:10", "status": true},
-        {"at": "11:12", "status": false},
-        {"at": "12:50", "status": true},
-        {"at": "13:20", "status": false},
-        {"at": "17:30", "status": true},
-        {"at": "23:59", "status": false}
+        {"at": "9:10", "status": "on"},
+        {"at": "11:12", "status": "off"},
+        {"at": "12:50", "status": "on"},
+        {"at": "13:20", "status": "off"},
+        {"at": "17:30", "status": "on"},
+        {"at": "23:59", "status": "off"}
     ],
     "device_2": [
-        {"at": "9:00", "status": true},
-        {"at": "10:05", "status": false},
-        {"at": "12:10", "status": true},
-        {"at": "13:36", "status": false},
-        {"at": "17:35", "status": true},
-        {"at": "21:00", "status": false},
-        {"at": "21:10", "status": true}
+        {"at": "9:00", "status": "on"},
+        {"at": "10:05", "status": "off"},
+        {"at": "12:10", "status": "on"},
+        {"at": "13:36", "status": "off"},
+        {"at": "17:35", "status": "on"},
+        {"at": "21:00", "status": "off"},
+        {"at": "21:10", "status": "on"}
     ],
     "device_3": [
-        {"at": "9:40", "status": true},
-        {"at": "11:20", "status": false},
-        {"at": "13:05", "status": true},
-        {"at": "16:21", "status": false},
-        {"at": "18:00", "status": true},
-        {"at": "18:10", "status": false},
-        {"at": "19:05", "status": true},
-        {"at": "20:30", "status": false},
-        {"at": "21:10", "status": true}
+        {"at": "9:40", "status": "on"},
+        {"at": "11:20", "status": "off"},
+        {"at": "13:05", "status": "on"},
+        {"at": "16:21", "status": "off"},
+        {"at": "18:00", "status": "on"},
+        {"at": "18:10", "status": "off"},
+        {"at": "19:05", "status": "on"},
+        {"at": "20:30", "status": "off"},
+        {"at": "21:10", "status": "on"}
     ],
     "device_4": [
-        {"at": "19:30", "status": true},
-        {"at": "20:55", "status": false},
-        {"at": "21:30", "status": true}
+        {"at": "19:30", "status": "on"},
+        {"at": "20:55", "status": "off"},
+        {"at": "21:30", "status": "on"}
     ],
     "device_5": [
     ]

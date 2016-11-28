@@ -72,3 +72,20 @@ Device.prototype.off = function() {
 		console.log("Device already OFF");
 	}
 };
+
+
+/**
+ * Toggle (invert) Device state
+ */
+Device.prototype.toggle = function() {
+	if( this._status == true ){
+		console.log("Device switched to OFF");
+		this._driver.off();
+		this._status = false;
+	}
+	else{
+		console.log("Device switched to ON");
+		this._driver.on();
+		this._status = true;
+	}
+};

@@ -13,7 +13,7 @@ var devices = {};
 exports.init = function(config, program) {
 	Object.keys(config.devices).forEach(function(key) {
 		var timeline = buildTimeline(program[key]);
-		var device = new Device(key, timeline);
+		var device = new Device(key, timeline, config.driver);
 
 		devices[key] = device;
 	});

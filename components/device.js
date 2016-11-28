@@ -2,7 +2,7 @@
  * Device Object
  */
 
-var _id, _status, _timeline;
+var _id, _status, _timeline, _driver;
 
 
 /**
@@ -11,10 +11,11 @@ var _id, _status, _timeline;
  * @param id
  * @returns
  */
-function Device(id, timeline) {
+function Device(id, timeline, driver) {
 	this._id = id;
 	this._status = false;
 	this._timeline = timeline;
+	this._driver = driver;
 }
 exports.Device = Device;
 

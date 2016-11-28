@@ -18,9 +18,17 @@ module.exports = function(config, devices, programs, _cb) {
 
 		Object.keys(devices.list()).forEach(function(key) {
 			var device = devices.list()[key];
-			console.info("Check device:", device.id());
-			console.info("Current Status:", device.status());
-			console.info("Timeline Status:", device.timeline()[currentMinute]);
+			//console.info("Check device:", device.id());
+			//console.info("Current Status:", device.status());
+			//console.info("Timeline Status:", device.timeline()[currentMinute]);
+			
+			//switch on / off based on timeline status
+			if( device.timeline()[currentMinute] == true ){
+				device.on();
+			}
+			else{
+				device.off();
+			}
 		});
 	}); 
 	tickerJob.start();

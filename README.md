@@ -8,47 +8,49 @@ Introduction
 ----
 
 In a recent installation we had the need to create effects of light and switch devices randomly.
-Given that the stand has had to "animate" in particular time intervals, we planned on doing all thanks to Raspberry PI, with software written in PHP that allow you to define one or more daily programs on and off with ignition scheduled.
+Objects in our installation had to "animate" in particular time intervals, and we planned to manage the whole effects using Raspberry PI, with some software written from scrach in Node.js that allow you to define one or more daily programs "on" and "off" with ignition scheduled.
 Defining different programs, each day is selected randomly from the program actually run, so visitors could see different behaviour every day.
 
-The status of the engine can be seen in a simple web interface that display the status of all devices (current on/off) and with a master button is it possible to switch ON / OFF the whole process.
+The status of the devices can be seen in a simple web interface that display the status of all devices (current on/off) and with a master button is it possible to switch ON / OFF the whole process.
+
+
+Basic Setup
+----
+
+For this setup you need:
+
+* A RaspberryPI (I used RaspberryPI 3 Model B)
+* A set of plugs remote controlled, in my setup I used [Etekcity® Remote Control Electrical Plug & Power Outlet](http://www.etekcity.com/product/100066.html)
+
+In my case the remote has one button for power ON and another button for power OFF for each plugs. This means that we need a couple of GPIO pins for each plugs, in order to simulate the button pressed for ON / OFF operation.
 
 
 Installation
 ----
 
-Copy this web application on any web server docroot (Apache or Nginx).
-The program works with a web interface for monitoring the schedule status and task schedulers.
+Clone the git repo in your RaspberryPI directory, like:
 
-The task scheduler run on top of linux crontab. There's two commands to add on crontab: 
+`mkdir /opt/smartberrypi`
+`git clone https://github.com/fabvla/SmartberryPI.git .`
 
-* `run.php`, will run every minute to check the timeline and perform actions.
-* `reset.php`, will run once a day (you can choose when), that reset the timeline and rebuild it.
+**NOTE:** If you're trying SmartberryPI on Windows, please read carefully the node-gyp installation prerequisites:
 
-On bash type:
+`https://github.com/nodejs/node-gyp`
 
-`crontab -e`
+I suggest to use "Windows -> Option 1":
 
-Than add these lines:
+`npm install --global --production windows-build-tools` 
 
-```
-
-* * * * * php /path/to/project/run.php
-
-0 12 * * * php /path/to/project/reset.php
-
-```
-
-In this example `reset.php` runs at 12.00 am every day (adjust to your needs).
+that works perfectly for me.
 
 
 Configuring Devices
 ----
 
-First of all, configures your devices (each device corresponds to one GPIO Pin) inside `config/device.php`:
+First of all, configures your devices (each device corresponds to one or two GPIO Pins, depends on how your remote works):
 
-1. Copy `config/device.php.sample` to `config/device.php`
-2. Edit `config/device.php` and map every device with a Name and GPIO PIN:
+1. Copy `config.json.sample` to `config.json`
+2. Edit `config.json.sample` and map every device with a Name and GPIO PIN:
 
 
 ```
@@ -76,6 +78,7 @@ First of all, configures your devices (each device corresponds to one GPIO Pin) 
 ];
 ```
 
+**Note:** I made a driver for my specific remote controller, and is it possible to specify a different driver for each device. This means that you can control different type of device.
 
 Configuring Programs
 ----

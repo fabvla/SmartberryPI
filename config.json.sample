@@ -1,29 +1,33 @@
 {
     "port": 5000,
-    "driver": "remote",
     "devices": {
         "device_1": {
             "name": "Lamp 1",
+            "driver": "remote_onoff",
             "pin_on": 21,
             "pin_off": 22
         },
         "device_2": {
+            "driver": "remote_onoff",
             "name": "Lamp 2",
             "pin_on": 23,
             "pin_off": 24
         },
         "device_3": {
             "name": "Lamp 3",
+            "driver": "remote_onoff",
             "pin_on": 25,
             "pin_off": 26
         },
         "device_4": {
             "name": "Table",
+            "driver": "remote_onoff",
             "pin_on": 27,
             "pin_off": 28
         },
         "device_5": {
             "name": "Floor",
+            "driver": "remote_onoff",
             "pin_on": 29,
             "pin_off": 30
         }

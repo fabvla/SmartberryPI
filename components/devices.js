@@ -12,9 +12,16 @@ var devices = {};
  */
 exports.init = function(config, program) {
 	Object.keys(config.devices).forEach(function(key) {
-		var timeline = buildTimeline(program[key]);
-		var device = new Device(key, timeline, config.driver);
+		var deviceConfig = config['devices'][key];
+		var deviceTimeline = buildTimeline(program[key]);
+		
+		var DeviceDriver = require('../drivers/' + deviceConfig.driver + '.js').DeviceDriver;
+		var deviceDriver = new DeviceDriver(deviceConfig);
+		
+		console.log("Setup Device:", key, "with config:", deviceConfig)
 
+		var device = new Device(key, deviceTimeline, deviceDriver);
+		
 		devices[key] = device;
 	});
 };

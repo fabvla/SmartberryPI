@@ -42,3 +42,33 @@ Device.prototype.status = function() {
 Device.prototype.timeline = function() {
 	return this._timeline;
 };
+
+
+/**
+ * Switch ON the Device
+ */
+Device.prototype.on = function() {
+	if( this._status != true ){
+		console.log("Device switched to ON");
+		this._driver.on();
+		this._status = true;
+	}
+	else{
+		console.log("Device already ON");
+	}
+};
+
+
+/**
+ * Switch OFF the Device
+ */
+Device.prototype.off = function() {
+	if( this._status != false ){
+		console.log("Device switched to OFF");
+		this._driver.off();
+		this._status = false;
+	}
+	else{
+		console.log("Device already OFF");
+	}
+};

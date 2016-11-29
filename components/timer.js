@@ -19,7 +19,7 @@ module.exports = function(config, devices, programs, _cb) {
 		Object.keys(devices.list()).forEach(function(key) {
 			var device = devices.list()[key];
 			
-			//switch on / off based on timeline status
+			//switch on / off / toggle based on timeline status
 			if( device.timeline()[currentMinute] == "on" ){
 				device.on();
 			}

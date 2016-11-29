@@ -25,8 +25,6 @@ var _pin_on, _pin_off;
  * @returns
  */
 function DeviceDriver(config) {
-//	this._pin_on = config.pin_on;
-//	this._pin_off = config.pin_off;
 	this._pin_on = new Gpio(config.pin_on, 'out');
 	this._pin_off = new Gpio(config.pin_off, 'out');
 }

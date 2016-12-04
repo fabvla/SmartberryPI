@@ -31,11 +31,9 @@ Installation
 Clone the git repo in your RaspberryPI directory, like:
 
 ```
-
 mkdir /opt/smartberrypi
 git clone https://github.com/fabvla/SmartberryPI.git .
 npm install
-
 ```
 
 **NOTE:** If you're trying SmartberryPI on Windows, please read carefully the node-gyp installation prerequisites:
@@ -173,6 +171,42 @@ to see the schedule status.
 You can also switch ON / OFF the scheduler for the current day.
 
 Every day, at midnight when reset task runs, it reset all the switches and re-set the application to default values (active=true) and with a new daily program.
+
+
+Startup on boot and Supervisoring
+----
+
+I used linux tool [Supervisord](http://www.supervisord.org/).
+To install run following command:
+
+```
+sudo apt-get install supervisor
+sudo service supervisor restart
+```
+
+Than, create a new configuration file inside:
+
+`/etc/supervisor/conf.d/smartberrypi.conf`
+
+```
+sudo touch /etc/supervisor/conf.d/smartberrypi.conf
+sudo vi /etc/supervisor/conf.d/smartberrypi.conf
+```
+
+and put this content:
+
+```
+[program:smartberrypi]
+command=node /opt/smartberrypi/app.js
+directory=/opt/smartberrypi/
+user=pi
+stderr_logfile=/opt/smartberrypi/logs/smartberry_err.log
+stdout_logfile=/opt/smartberrypi/logs/smartberry_out.log
+autostart=true
+autorestart=true
+```
+
+After that, reboot Raspberry PI for test the scripts.
 
 
 References and Acknowledgements

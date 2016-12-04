@@ -13,7 +13,7 @@ var _id, _status, _timeline, _driver;
  */
 function Device(id, timeline, driver) {
 	this._id = id;
-	this._status = false;
+	this._status = -1;  //initialize with an indeterminated value, to force at the first time the switch on/off of the remote
 	this._timeline = timeline;
 	this._driver = driver;
 }

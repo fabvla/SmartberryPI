@@ -1,4 +1,5 @@
 /**
+ * NOTE: NOT TESTED
  * Remote that emulate remote_switchpush Driver with One button (in Switch Push Button mode) Driver.
  * This driver simulate the push of the button setting the GPIO pin (corresponding on ON or OFF) to "ON" for 1 sec, than to "OFF". 
  * 

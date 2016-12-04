@@ -30,8 +30,13 @@ Installation
 
 Clone the git repo in your RaspberryPI directory, like:
 
-`mkdir /opt/smartberrypi`
-`git clone https://github.com/fabvla/SmartberryPI.git .`
+```
+
+mkdir /opt/smartberrypi
+git clone https://github.com/fabvla/SmartberryPI.git .
+npm install
+
+```
 
 **NOTE:** If you're trying SmartberryPI on Windows, please read carefully the node-gyp installation prerequisites:
 

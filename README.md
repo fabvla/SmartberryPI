@@ -208,6 +208,24 @@ autorestart=true
 
 After that, reboot Raspberry PI for test the scripts.
 
+If you want to verify the status of the process, use this command:
+
+```
+pi@raspberrypi:$ sudo supervisorctl
+smartberrypi                     RUNNING    pid 2435, uptime 0:01:01
+```
+
+For start / stop smartberrypi manually, use:
+
+```
+sudo supervisorctl stop smartberrypi
+sudo supervisorctl start smartberrypi
+```
+
+and look log files with tail:
+
+`tail -f /opt/smartberrypi/logs/smartberry_out.log`
+
 
 References and Acknowledgements
 ----

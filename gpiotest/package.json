@@ -1,0 +1,16 @@
+{
+  "name": "gpiotest",
+  "version": "1.0.0",
+  "description": "A Node.js test for simulate button press to an outlets remote via GPIO",
+  "main": "index.js",
+  "dependencies": {
+    "onoff": "^1.1.1",
+    "sleep": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fabvla Snc",
+  "license": "MIT"
+}

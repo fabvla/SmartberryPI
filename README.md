@@ -162,10 +162,16 @@ Web Interface
 
 Connect to your Raspberry PI web server:
 
-`http://raspberry/`
+`http://raspberrypi/`
 
 to see the schedule status.
 You can also switch ON / OFF the scheduler for the current day.
 
 Every day, at midnight when reset task runs, it reset all the switches and re-set the application to default values (active=true) and with a new daily program.
 
+
+References and Acknowledgements
+----
+
+* Thanks to Rocco Musolino, we inspired our project by his [IOT-433 Project](https://github.com/roccomuso/iot-433mhz)
+* [RPI-433](https://github.com/eroak/rpi-433), a Node.js library for sniffing the RF codes of our outlets and remote

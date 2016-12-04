@@ -25,11 +25,48 @@ module.exports = function(app, io, devices, programs){
 		
 		if (typeof req.params.id !== 'undefined'){
 			res.status(200).json(devices.get(req.params.id));
-	  	} else{
+	  	}
+		else{
 	  		res.status(400).json({status: 'error', error: 'Provide valid device id'});
 		}		
 	});
 	
+
+	/**
+	 * Change status for a specific device.
+	 * Status can be:
+	 * - on: switch on device
+	 * - off: switch off device
+	 * - toggle: change status of the device
+	 */
+	app.get('/api/devices/:id/:status', function (req, res) {
+		console.log("GET /api/device/", req.params.id, "/", req.params.status);
+		
+		if (typeof req.params.id !== 'undefined'){
+			if (typeof req.params.status !== 'undefined'){
+				device = devices.get(req.params.id);
+				
+				if (req.params.status == 'on'){
+					device.on();
+				}
+				else if (req.params.status == 'off'){
+					device.off();
+				}
+				else if (req.params.status == 'toggle'){
+					device.toggle();
+				}
+
+				res.status(200).json(device);
+		  	}
+			else{
+		  		res.status(400).json({status: 'error', error: 'Provide valid device status'});
+			}		
+	  	} 
+		else{
+	  		res.status(400).json({status: 'error', error: 'Provide valid device id'});
+		}		
+	});
+
 	
 	/**
 	 * Get all available programs

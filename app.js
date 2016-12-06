@@ -31,7 +31,7 @@ async.series({
                 var http = server.http;
                 var io = server.io;
 
-                require('./components/api.js')(http, io, devices, programs);
+                require('./components/api.js')(http, io, config, devices, programs);
 
                 // Web Socket handler
                 require('console-mirroring')(io); // Console mirroring

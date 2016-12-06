@@ -3,10 +3,38 @@ var path = require('path');
 var fs = require('fs');
 var version = require('../package.json').version;
 
-module.exports = function(app, io, devices, programs){
+module.exports = function(app, io, config, devices, programs){
 	//***************
 	//	API
 	//***************
+
+	/**
+	 * Enable SmartberryPI
+	 */
+	app.get('/api/enable', function (req, res) {
+		console.log("GET /api/enable");
+		config.enabled = true;
+		res.status(200).json(config.enabled);
+	});
+
+	
+	/**
+	 * Disable SmartberryPI and all devices
+	 */
+	app.get('/api/disable', function (req, res) {
+		console.log("GET /api/disable");
+		config.enabled = false;
+		
+		//switch off all devices
+		Object.keys(devices.list()).forEach(function(key) {
+			var device = devices.list()[key];
+			
+			device.off();
+		});
+
+		res.status(200).json(config.enabled);
+	});
+
 	
 	/**
 	 * Get all devices with timetable and status

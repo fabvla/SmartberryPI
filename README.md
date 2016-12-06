@@ -114,7 +114,8 @@ First of all, configures your devices (each device corresponds to one or two GPI
 **Note:** I made a driver for my specific remote controller, and is it possible to specify a different driver for each device. This means that you can control different type of device (ie: a smart plug, an RF433MHz device etc...).
 
 Actually I only tested a remote with a pear of ON / OFF buttons for each device. I have a remote that can handle 5 device, so I have 10 buttons corresponding to 10 different GPIO output pin.
-![Etekcity Remote Plugs](https://github.com/fabvla/SmartberryPI/blob/master/other/pics/etekcity-remote.jpg?raw=true "Etekcity Remote Plugs")
+
+![Etekcity Remote Plugs](https://github.com/fabvla/SmartberryPI/blob/master/others/pics/etekcity-remote.jpg?raw=true "Etekcity Remote Plugs")
 
 
 Configuring Programs

@@ -10,16 +10,17 @@ var devices = {};
 /**
  * Load config.devices and initialize the array of Device objects
  */
-exports.init = function(config, program) {
+exports.init = function(config, programs) {
 	Object.keys(config.devices).forEach(function(key) {
 		var deviceConfig = config['devices'][key];
-		var deviceTimeline = buildTimeline(program[key]);
+		
+		console.log("Setup Device:", key, "with config:", deviceConfig);
+		
+		var deviceTimeline = buildTimeline(programs, key);
 		
 		var DeviceDriver = require('../drivers/' + deviceConfig.driver + '.js').DeviceDriver;
 		var deviceDriver = new DeviceDriver(deviceConfig);
 		
-		console.log("Setup Device:", key, "with config:", deviceConfig);
-
 		var device = new Device(key, deviceTimeline, deviceDriver);
 		
 		devices[key] = device;
@@ -66,12 +67,19 @@ exports.off = function(id) {
  * @param program
  * @returns
  */
-function buildTimeline(program){
+function buildTimeline(programs, key){
 	//fill 60 minutes * 24 hours = 1440 cells to off
 	let timeline = Array(60 * 24);
 	timeline = timeline.fill("off");
 
-	if( typeof program !== undefined ){
+	var program = [];
+	if(key in programs) {
+		program = programs[key];
+	}
+	
+	if( program.length > 0 ){
+		console.log("Found ", program.length, "programs, building timeline.")
+		
 		for (let i = 0; i < program.length; i++) {
 			let timelet = program[i];
 			var startMinute = timeToMinutes(timelet['at']);
@@ -79,8 +87,9 @@ function buildTimeline(program){
 		}
 	}
 	else{
-		console.log("Warning: device without a program.")
+		console.log("Warning: device", key ," is without a program.")
 	}
+	
 	return timeline;
 }
 

@@ -257,4 +257,4 @@ References and Acknowledgements
 ----
 
 * Thanks to Rocco Musolino, we inspired our project by his [IOT-433 Project](https://github.com/roccomuso/iot-433mhz)
-* [RPI-433](https://github.com/eroak/rpi-433), a Node.js library for sniffing the RF codes of our outlets and remote
+* [onoff](https://github.com/fivdi/onoff), a Node.js interface for GPIO ports

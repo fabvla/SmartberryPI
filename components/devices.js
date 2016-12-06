@@ -78,7 +78,9 @@ function buildTimeline(program){
 			timeline = timeline.fill(timelet['status'].toLowerCase(), startMinute);
 		}
 	}
-	
+	else{
+		console.log("Warning: device without a program.")
+	}
 	return timeline;
 }
 

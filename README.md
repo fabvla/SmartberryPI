@@ -123,6 +123,40 @@ Actually I only tested a remote with a pear of ON / OFF buttons for each device.
 ![Etekcity Remote Plugs](https://github.com/fabvla/SmartberryPI/blob/master/others/pics/etekcity-remote.jpg?raw=true "Etekcity Remote Plugs")
 
 
+Hardware setup
+----
+
+![Etekcity Remote Setup](https://github.com/fabvla/SmartberryPI/blob/master/others/pics/etekcity-remote-setup.jpg?raw=true "Etekcity Remote Setup")
+
+Before plug remote to GPIO, is better to set all used PINs to 'out', like:
+
+```
+gpio -g mode 17 out
+gpio -g mode 18 out
+gpio -g mode 22 out
+gpio -g mode 23 out
+gpio -g mode 24 out
+gpio -g mode 25 out
+gpio -g mode 5 out
+gpio -g mode 6 out
+gpio -g mode 16 out
+gpio -g mode 26 out
+```
+
+Than verify the system manually by switching ON / OFF every plugs with command line:
+
+```
+gpio -g write 17 1
+gpio -g write 17 0
+gpio -g write 18 1
+gpio -g write 18 0
+...
+gpio -g write 16 1
+gpio -g write 16 0
+gpio -g write 26 1
+gpio -g write 26 0
+```
+
 Configuring Programs
 ----
 

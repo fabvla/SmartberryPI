@@ -59,42 +59,62 @@ First of all, configures your devices (each device corresponds to one or two GPI
 ```
 {
     "port": 5000,
+    "enabled": true,
     "devices": {
         "device_1": {
             "name": "Lamp 1",
             "driver": "remote_onoff_mock",
-            "pin_on": 21,
-            "pin_off": 22
+            "options": {
+                "pin_on": 21,
+                "pin_off": 22
+            }
         },
         "device_2": {
             "driver": "remote_onoff_mock",
             "name": "Lamp 2",
-            "pin_on": 23,
-            "pin_off": 24
+            "options": {
+                "pin_on": 23,
+                "pin_off": 24
+             }
         },
         "device_3": {
             "name": "Lamp 3",
             "driver": "remote_onoff_mock",
-            "pin_on": 25,
-            "pin_off": 26
+            "options": {
+                "pin_on": 25,
+                "pin_off": 26
+            }
         },
         "device_4": {
             "name": "Table",
             "driver": "remote_onoff_mock",
-            "pin_on": 27,
-            "pin_off": 28
+            "options": {
+                "pin_on": 27,
+                "pin_off": 28
+            }
         },
         "device_5": {
             "name": "Floor",
             "driver": "remote_onoff_mock",
-            "pin_on": 29,
-            "pin_off": 30
+            "options": {
+                "pin_on": 29,
+                "pin_off": 30
+            }
         }
     }
 }
 ```
 
+
+* `port`: Web Server HTTP port
+* `enabled`: True if you want to start SmartberryPI enabled, false otherwise (you can switch enable/disable by web interface)
+* `devices`: Device list
+
+
 **Note:** I made a driver for my specific remote controller, and is it possible to specify a different driver for each device. This means that you can control different type of device (ie: a smart plug, an RF433MHz device etc...).
+
+Actually I only tested a remote with a pear of ON / OFF buttons for each device. I have a remote that can handle 5 device, so I have 10 buttons corresponding to 10 different GPIO output pin.
+![Etekcity Remote Plugs](https://github.com/fabvla/SmartberryPI/blob/master/other/pics/etekcity-remote.jpg?raw=true "Etekcity Remote Plugs")
 
 
 Configuring Programs

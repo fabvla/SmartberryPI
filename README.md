@@ -1,5 +1,10 @@
-SmartberryPI
-========
+       ____                       _   _                          ____ ___
+      / ___| _ __ ___   __ _ _ __| |_| |__   ___ _ __ _ __ _   _|  _ \_ _|
+      \___ \| '_ ` _ \ / _` | '__| __| '_ \ / _ \ '__| '__| | | | |_) | |
+       ___) | | | | | | (_| | |  | |_| |_) |  __/ |  | |  | |_| |  __/| |
+      |____/|_| |_| |_|\__,_|_|   \__|_.__/ \___|_|  |_|   \__, |_|  |___|
+                                                      |___/
+
 
 **SmartberryPI** is a simple Node.js library for building a task scheduler for Automation and IoT installations based on Raspberry PI.
 

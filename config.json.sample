@@ -4,42 +4,42 @@
     "devices": {
         "device_1": {
             "name": "Lamp 1",
-            "driver": "remote_onoff_mock",
+            "driver": "remote_onoff",
             "options": {
-                "pin_on": 21,
-                "pin_off": 22
+                "pin_on": 17,
+                "pin_off": 18
             }
         },
         "device_2": {
-            "driver": "remote_onoff_mock",
+            "driver": "remote_onoff",
             "name": "Lamp 2",
             "options": {
-                "pin_on": 23,
-                "pin_off": 24
+                "pin_on": 22,
+                "pin_off": 23
              }
         },
         "device_3": {
             "name": "Lamp 3",
-            "driver": "remote_onoff_mock",
+            "driver": "remote_onoff",
             "options": {
-                "pin_on": 25,
-                "pin_off": 26
+                "pin_on": 24,
+                "pin_off": 25
             }
         },
         "device_4": {
             "name": "Table",
-            "driver": "remote_onoff_mock",
+            "driver": "remote_onoff",
             "options": {
-                "pin_on": 27,
-                "pin_off": 28
+                "pin_on": 5,
+                "pin_off": 6
             }
         },
         "device_5": {
             "name": "Floor",
-            "driver": "remote_onoff_mock",
+            "driver": "remote_onoff",
             "options": {
-                "pin_on": 29,
-                "pin_off": 30
+                "pin_on": 16,
+                "pin_off": 26
             }
         }
     }

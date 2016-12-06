@@ -35,11 +35,7 @@ module.exports = function(app, io, config, devices, programs){
 		config.enabled = false;
 		
 		//switch off all devices
-		Object.keys(devices.list()).forEach(function(key) {
-			var device = devices.list()[key];
-			
-			device.off();
-		});
+		devices.off();
 
 		res.status(200).json(config);
 	});

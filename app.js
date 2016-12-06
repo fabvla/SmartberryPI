@@ -78,13 +78,10 @@ if (process.platform === 'win32') {
 
 process.on('SIGINT', function() {
     console.log('Closing...');
-    if (typeof rf433mhz !== 'undefined') { // Close Serial Port
-        rf433mhz.close(function(err) {
-            if (err) console.error('Error: ', err);
-            else console.log('Serial Port closed.');
-            //graceful shutdown
-            process.exit();
-        });
-
-    } else process.exit();
+    
+    devices.off();
+    
+    console.log('Server halted.');
+    
+    process.exit();
 });

@@ -18,7 +18,7 @@ exports.init = function(config, program) {
 		var DeviceDriver = require('../drivers/' + deviceConfig.driver + '.js').DeviceDriver;
 		var deviceDriver = new DeviceDriver(deviceConfig);
 		
-		console.log("Setup Device:", key, "with config:", deviceConfig)
+		console.log("Setup Device:", key, "with config:", deviceConfig);
 
 		var device = new Device(key, deviceTimeline, deviceDriver);
 		
@@ -40,6 +40,23 @@ exports.list = function() {
  */
 exports.get = function(id) {
 	return devices[id];
+};
+
+
+/**
+ * Switch off all devices
+ */
+exports.off = function(id) {
+	console.log("Shutdown all devices...");
+	
+	//switch off all devices
+	Object.keys(devices).forEach(function(key) {
+		var device = devices[key];
+		
+		device.off();
+	});
+
+	return;
 };
 
 

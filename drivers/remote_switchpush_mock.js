@@ -7,8 +7,10 @@
  *	"device_1": {
  *  	"name": "Lamp 1",
  *  	"driver": "remote_switchpush_mock",
- *   	"pin": 21
- *  },
+ *      "options": {
+ *   	    "pin": 21
+ *      }
+ *  }
  * 
  */
 
@@ -24,7 +26,7 @@ var _pin;
  * @returns
  */
 function DeviceDriver(config) {
-	this._pin = config.pin;
+	this._pin = config.options.pin;
 }
 exports.DeviceDriver = DeviceDriver;
 

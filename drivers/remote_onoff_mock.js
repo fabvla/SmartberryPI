@@ -7,9 +7,11 @@
  *	"device_1": {
  *  	"name": "Lamp 1",
  *  	"driver": "remote_onoff_mock",
- *   	"pin_on": 21,
- *   	"pin_off": 22
- *  },
+ *  	"options": {
+ *   	    "pin_on": 21,
+ *   	    "pin_off": 22
+ *       }
+ *  }
  * 
  */
 
@@ -25,8 +27,8 @@ var _pin_on, _pin_off;
  * @returns
  */
 function DeviceDriver(config) {
-	this._pin_on = config.pin_on;
-	this._pin_off = config.pin_off;
+	this._pin_on = config.options.pin_on;
+	this._pin_off = config.options.pin_off;
 }
 exports.DeviceDriver = DeviceDriver;
 

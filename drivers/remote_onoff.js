@@ -6,9 +6,12 @@
  * 
  *	"device_1": {
  *  	"name": "Lamp 1",
- *   	"pin_on": 21,
- *   	"pin_off": 22
- *  },
+ *  	"driver": "remote_onoff",
+ *  	"options": {
+ *   	    "pin_on": 21,
+ *   	    "pin_off": 22
+ *       }
+ *  }
  * 
  */
 
@@ -25,8 +28,8 @@ var _pin_on, _pin_off;
  * @returns
  */
 function DeviceDriver(config) {
-	this._pin_on = new Gpio(config.pin_on, 'out');
-	this._pin_off = new Gpio(config.pin_off, 'out');
+	this._pin_on = new Gpio(config.options.pin_on, 'out');
+	this._pin_off = new Gpio(config.options.pin_off, 'out');
 }
 exports.DeviceDriver = DeviceDriver;
 

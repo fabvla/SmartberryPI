@@ -8,8 +8,10 @@
  *	"device_1": {
  *  	"name": "Lamp 1",
  *  	"driver": "remote_switchpush",
- *   	"pin": 21
- *  },
+ *      "options": {
+ *   	    "pin": 21
+ *      }
+ *  }
  * 
  */
 
@@ -26,7 +28,7 @@ var _pin;
  * @returns
  */
 function DeviceDriver(config) {
-	this._pin = new Gpio(config.pin, 'out');
+	this._pin = new Gpio(config.options.pin, 'out');
 }
 exports.DeviceDriver = DeviceDriver;
 

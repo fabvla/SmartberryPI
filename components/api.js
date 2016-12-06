@@ -9,20 +9,29 @@ module.exports = function(app, io, config, devices, programs){
 	//***************
 
 	/**
+	 * SmartberryPI status
+	 */
+	app.get('/api/status', function (req, res) {
+		console.log("GET /api/status");
+		res.status(200).json(config);
+	});
+
+	
+	/**
 	 * Enable SmartberryPI
 	 */
-	app.get('/api/enable', function (req, res) {
-		console.log("GET /api/enable");
+	app.get('/api/status/enable', function (req, res) {
+		console.log("GET /api/status/enable");
 		config.enabled = true;
-		res.status(200).json(config.enabled);
+		res.status(200).json(config);
 	});
 
 	
 	/**
 	 * Disable SmartberryPI and all devices
 	 */
-	app.get('/api/disable', function (req, res) {
-		console.log("GET /api/disable");
+	app.get('/api/status/disable', function (req, res) {
+		console.log("GET /api/status/disable");
 		config.enabled = false;
 		
 		//switch off all devices
@@ -32,7 +41,7 @@ module.exports = function(app, io, config, devices, programs){
 			device.off();
 		});
 
-		res.status(200).json(config.enabled);
+		res.status(200).json(config);
 	});
 
 	

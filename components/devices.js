@@ -71,12 +71,14 @@ function buildTimeline(program){
 	let timeline = Array(60 * 24);
 	timeline = timeline.fill("off");
 
-	for (let i = 0; i < program.length; i++) {
-		let timelet = program[i];
-		var startMinute = timeToMinutes(timelet['at']);
-		timeline = timeline.fill(timelet['status'].toLowerCase(), startMinute);
+	if( typeof program !== undefined ){
+		for (let i = 0; i < program.length; i++) {
+			let timelet = program[i];
+			var startMinute = timeToMinutes(timelet['at']);
+			timeline = timeline.fill(timelet['status'].toLowerCase(), startMinute);
+		}
 	}
-		
+	
 	return timeline;
 }
 

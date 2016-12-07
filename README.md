@@ -75,8 +75,8 @@ First of all, configures your devices (each device corresponds to one or two GPI
             }
         },
         "device_2": {
-            "driver": "remote_onoff",
             "name": "Lamp 2",
+            "driver": "remote_onoff",
             "options": {
                 "pin_on": 22,
                 "pin_off": 23

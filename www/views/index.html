@@ -29,8 +29,19 @@
     <!-- Material Design fonts -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">    
 </head>
 <body>
-    v. {{version}}
+    {{title}} v. {{version}}
+    
+	<div class="center">
+	    <div class="toggle-button {{#config.enabled}}toggle-button-selected{{/config.enabled}}">
+	        <button></button>
+	    </div>
+	</div>
+	
+    <script src="/assets/js/jquery-3.1.1.min.js"></script>
+	<script src="/assets/js/main.js"></script>
+    
 </body>
 </html>

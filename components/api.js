@@ -49,7 +49,26 @@ module.exports = function(app, io, config, devices, programs){
 		res.status(200).json(config);
 	});
 
-	
+
+	/**
+	 * Disable SmartberryPI and all devices
+	 */
+	app.get('/api/status/toggle', function (req, res) {
+		if( config.debug == true){
+			console.log("GET /api/status/toggle");
+		}
+		
+		config.enabled = !config.enabled;
+		
+		//switch off all devices
+		if( config.enabled == false ){
+			devices.off();
+		}
+
+		res.status(200).json(config);
+	});
+
+
 	/**
 	 * Get all devices with timetable and status
 	 */
@@ -160,7 +179,8 @@ module.exports = function(app, io, config, devices, programs){
 		res.render('index', {
 			cache: true,
 			title: 'SmartberryPI',
-			version: version
+			version: version,
+			config: config
 		});
 	});
 	

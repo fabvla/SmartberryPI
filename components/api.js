@@ -176,14 +176,17 @@ module.exports = function(app, io, config, devices, programs){
 	 * Serving index view
 	 */
 	app.get(['/', '/index.html'], function(req, res){
+		console.log(devices.list());
 		res.render('index', {
 			cache: true,
 			title: 'SmartberryPI',
 			version: version,
-			config: config
+			config: config,
+			devices: devices.list(),
+			program: programs.active(),
 		});
 	});
-	
+
 	
 	/**
 	 * serve as static all the other routes

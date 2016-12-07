@@ -44,7 +44,10 @@ async.series({
         timer: function(callback) {
             // Starting HTTP Server, API, and Web Socket
             require('./components/timer.js')(config, devices, programs, function(timer) {
-            	console.log("Timer start:", timer);
+            	
+            	if( config.debug == true){
+            		console.log("Timer start:", timer);
+            	}
             });
 
             callback(null, 1);

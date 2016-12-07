@@ -17,7 +17,7 @@
 
 var sleep = require('sleep');
 
-var _pin_on, _pin_off;
+var _pin_on, _pin_off, _config;
 
 
 /**
@@ -26,9 +26,10 @@ var _pin_on, _pin_off;
  * @param id
  * @returns
  */
-function DeviceDriver(config) {
-	this._pin_on = config.options.pin_on;
-	this._pin_off = config.options.pin_off;
+function DeviceDriver(deviceConfig, config) {
+	this._pin_on = deviceConfig.options.pin_on;
+	this._pin_off = deviceConfig.options.pin_off;
+	this._config = config;
 }
 exports.DeviceDriver = DeviceDriver;
 
@@ -37,9 +38,13 @@ exports.DeviceDriver = DeviceDriver;
  * Simulate Button ON pressed for 1 sec
  */
 DeviceDriver.prototype.on = function() {
-	console.log("_pin_on.writeSync(1) for port:", this._pin_on);
+	if( this._config.debug == true){
+		console.log("_pin_on.writeSync(1) for port:", this._pin_on);
+	}
 	sleep.sleep(1);
-	console.log("_pin_on.writeSync(0) for port:", this._pin_on);
+	if( this._config.debug == true){
+		console.log("_pin_on.writeSync(0) for port:", this._pin_on);
+	}
 };
 
 
@@ -47,7 +52,11 @@ DeviceDriver.prototype.on = function() {
  * Simulate Button OFF pressed for 1 sec
  */
 DeviceDriver.prototype.off = function() {
-	console.log("_pin_off.writeSync(1) for port:", this._pin_off);
+	if( this._config.debug == true){
+		console.log("_pin_off.writeSync(1) for port:", this._pin_off);
+	}
 	sleep.sleep(1);
-	console.log("_pin_off.writeSync(0) for port:", this._pin_off);
+	if( this._config.debug == true){
+		console.log("_pin_off.writeSync(0) for port:", this._pin_off);
+	}
 };

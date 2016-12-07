@@ -18,7 +18,7 @@
 var Gpio = require("onoff").Gpio;
 var sleep = require('sleep');
 
-var _pin;
+var _pin, _config;
 
 
 /**
@@ -27,8 +27,9 @@ var _pin;
  * @param id
  * @returns
  */
-function DeviceDriver(config) {
-	this._pin = new Gpio(config.options.pin, 'out');
+function DeviceDriver(deviceConfig, config) {
+	this._pin = new Gpio(deviceConfig.options.pin, 'out');
+	this._config = config;
 }
 exports.DeviceDriver = DeviceDriver;
 
@@ -37,7 +38,9 @@ exports.DeviceDriver = DeviceDriver;
  * Simulate Button ON pressed for 1 sec
  */
 DeviceDriver.prototype.on = function() {
-	console.log("SWITCHPUSH set to ON for pin", this._pin);
+	if( this._config.debug == true){
+		console.log("SWITCHPUSH set to ON for pin", this._pin);
+	}
 	this._pin.writeSync(1);
 	sleep.sleep(1);
 	this._pin.writeSync(0);
@@ -48,7 +51,9 @@ DeviceDriver.prototype.on = function() {
  * Simulate Button OFF pressed for 1 sec
  */
 DeviceDriver.prototype.off = function() {
-	console.log("SWITCHPUSH set to OFF for pin", this._pin);
+	if( this._config.debug == true){
+		console.log("SWITCHPUSH set to OFF for pin", this._pin);
+	}
 	this._pin.writeSync(1);
 	sleep.sleep(1);
 	this._pin.writeSync(0);

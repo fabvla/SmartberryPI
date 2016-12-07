@@ -65,6 +65,7 @@ First of all, configures your devices (each device corresponds to one or two GPI
 {
     "port": 5000,
     "enabled": true,
+    "debug": true,
     "devices": {
         "device_1": {
             "name": "Lamp 1",
@@ -113,6 +114,7 @@ First of all, configures your devices (each device corresponds to one or two GPI
 
 * `port`: Web Server HTTP port
 * `enabled`: True if you want to start SmartberryPI enabled, false otherwise (you can switch enable/disable by web interface)
+* `debug`: True for print debug messages on logs, false otherwise. We prefer to log less as possible due to writes limitations of the SD card.
 * `devices`: Device list
 
 

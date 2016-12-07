@@ -4,6 +4,7 @@
 
 var Device = require('./device.js').Device;
 
+var _config;
 var devices = {};
 
 
@@ -11,17 +12,21 @@ var devices = {};
  * Load config.devices and initialize the array of Device objects
  */
 exports.init = function(config, programs) {
+	_config = config;
+	
 	Object.keys(config.devices).forEach(function(key) {
 		var deviceConfig = config['devices'][key];
 		
-		console.log("Setup Device:", key, "with config:", deviceConfig);
+		if( _config.debug == true){
+			console.log("Setup Device:", key, "with config:", deviceConfig);
+		}
 		
 		var deviceTimeline = buildTimeline(programs, key);
 		
 		var DeviceDriver = require('../drivers/' + deviceConfig.driver + '.js').DeviceDriver;
-		var deviceDriver = new DeviceDriver(deviceConfig);
+		var deviceDriver = new DeviceDriver(deviceConfig, config);
 		
-		var device = new Device(key, deviceTimeline, deviceDriver);
+		var device = new Device(key, deviceTimeline, deviceDriver, config);
 		
 		devices[key] = device;
 	});
@@ -48,7 +53,9 @@ exports.get = function(id) {
  * Switch off all devices
  */
 exports.off = function(id) {
-	console.log("Shutdown all devices...");
+	if( _config.debug == true){
+		console.log("Shutdown all devices...");
+	}
 	
 	//switch off all devices
 	Object.keys(devices).forEach(function(key) {
@@ -78,7 +85,9 @@ function buildTimeline(programs, key){
 	}
 	
 	if( program.length > 0 ){
-		console.log("Found ", program.length, "programs, building timeline.")
+		if( _config.debug == true){
+			console.log("Found ", program.length, "programs, building timeline.")
+		}
 		
 		for (let i = 0; i < program.length; i++) {
 			let timelet = program[i];
@@ -87,7 +96,9 @@ function buildTimeline(programs, key){
 		}
 	}
 	else{
-		console.log("Warning: device", key ," is without a program.")
+		if( _config.debug == true){
+			console.log("Warning: device", key ," is without a program.")
+		}
 	}
 	
 	return timeline;

@@ -12,7 +12,10 @@ module.exports = function(app, io, config, devices, programs){
 	 * SmartberryPI status
 	 */
 	app.get('/api/status', function (req, res) {
-		console.log("GET /api/status");
+		if( config.debug == true){
+			console.log("GET /api/status");
+		}
+
 		res.status(200).json(config);
 	});
 
@@ -21,7 +24,10 @@ module.exports = function(app, io, config, devices, programs){
 	 * Enable SmartberryPI
 	 */
 	app.get('/api/status/enable', function (req, res) {
-		console.log("GET /api/status/enable");
+		if( config.debug == true){
+			console.log("GET /api/status/enable");
+		}
+		
 		config.enabled = true;
 		res.status(200).json(config);
 	});
@@ -31,7 +37,10 @@ module.exports = function(app, io, config, devices, programs){
 	 * Disable SmartberryPI and all devices
 	 */
 	app.get('/api/status/disable', function (req, res) {
-		console.log("GET /api/status/disable");
+		if( config.debug == true){
+			console.log("GET /api/status/disable");
+		}
+		
 		config.enabled = false;
 		
 		//switch off all devices
@@ -45,7 +54,10 @@ module.exports = function(app, io, config, devices, programs){
 	 * Get all devices with timetable and status
 	 */
 	app.get('/api/devices', function (req, res) {
-		console.log("GET /api/devices");
+		if( config.debug == true){
+			console.log("GET /api/devices");
+		}
+		
 		res.status(200).json(devices.list());
 	});
 
@@ -53,8 +65,10 @@ module.exports = function(app, io, config, devices, programs){
 	/**
 	 * Get a specific device by id
 	 */
-	app.get('/api/devices/:id', function (req, res) {		
-		console.log("GET /api/device/", req.params.id);
+	app.get('/api/devices/:id', function (req, res) {
+		if( config.debug == true){
+			console.log("GET /api/device/", req.params.id);
+		}
 		
 		if (typeof req.params.id !== 'undefined'){
 			res.status(200).json(devices.get(req.params.id));
@@ -73,7 +87,9 @@ module.exports = function(app, io, config, devices, programs){
 	 * - toggle: change status of the device
 	 */
 	app.get('/api/devices/:id/:status', function (req, res) {
-		console.log("GET /api/device/", req.params.id, "/", req.params.status);
+		if( config.debug == true){
+			console.log("GET /api/device/", req.params.id, "/", req.params.status);
+		}
 		
 		if (typeof req.params.id !== 'undefined'){
 			if (typeof req.params.status !== 'undefined'){
@@ -105,7 +121,10 @@ module.exports = function(app, io, config, devices, programs){
 	 * Get all available programs
 	 */
 	app.get('/api/programs', function (req, res) {
-		console.log("GET /api/programs");
+		if( config.debug == true){
+			console.log("GET /api/programs");
+		}
+		
 		res.status(200).json(programs.list());
 	});
 
@@ -114,7 +133,10 @@ module.exports = function(app, io, config, devices, programs){
 	 * Get current (active) program
 	 */
 	app.get('/api/programs/active', function (req, res) {
-		console.log("GET /api/programs/active");
+		if( config.debug == true){
+			console.log("GET /api/programs/active");
+		}
+
 		res.status(200).json(programs.active());
 	});
 

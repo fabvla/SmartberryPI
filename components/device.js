@@ -2,7 +2,7 @@
  * Device Object
  */
 
-var _id, _status, _timeline, _driver;
+var _id, _status, _timeline, _driver, _config;
 
 
 /**
@@ -11,11 +11,12 @@ var _id, _status, _timeline, _driver;
  * @param id
  * @returns
  */
-function Device(id, timeline, driver) {
+function Device(id, timeline, driver, config) {
 	this._id = id;
 	this._status = -1;  //initialize with an indeterminated value, to force at the first time the switch on/off of the remote
 	this._timeline = timeline;
 	this._driver = driver;
+	this._config = config;
 }
 exports.Device = Device;
 
@@ -49,12 +50,16 @@ Device.prototype.timeline = function() {
  */
 Device.prototype.on = function() {
 	if( this._status != true ){
-		console.log("Device", this._id, "on(): switched to ON");
+		if( this._config.debug == true){
+			console.log("Device", this._id, "on(): switched to ON");
+		}
 		this._driver.on();
 		this._status = true;
 	}
 	else{
-		console.log("Device", this._id, "on(): already ON");
+		if( this._config.debug == true){
+			console.log("Device", this._id, "on(): already ON");
+		}
 	}
 };
 
@@ -64,12 +69,16 @@ Device.prototype.on = function() {
  */
 Device.prototype.off = function() {
 	if( this._status != false ){
-		console.log("Device", this._id, "off(): switched to OFF");
+		if( this._config.debug == true){
+			console.log("Device", this._id, "off(): switched to OFF");
+		}
 		this._driver.off();
 		this._status = false;
 	}
 	else{
-		console.log("Device", this._id, "off(): already OFF");
+		if( this._config.debug == true){
+			console.log("Device", this._id, "off(): already OFF");
+		}
 	}
 };
 
@@ -79,12 +88,16 @@ Device.prototype.off = function() {
  */
 Device.prototype.toggle = function() {
 	if( this._status == true ){
-		console.log("Device", this._id, "toggle(): switched to OFF");
+		if( this._config.debug == true){
+			console.log("Device", this._id, "toggle(): switched to OFF");
+		}
 		this._driver.off();
 		this._status = false;
 	}
 	else{
-		console.log("Device", this._id, "toggle(): switched to ON");
+		if( this._config.debug == true){
+			console.log("Device", this._id, "toggle(): switched to ON");
+		}
 		this._driver.on();
 		this._status = true;
 	}

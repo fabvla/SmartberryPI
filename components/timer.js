@@ -10,12 +10,16 @@ module.exports = function(config, devices, programs, _cb) {
 
 	//ticker run every minute
 	var tickerJob = cron.job("0 * * * * *", function(){
-	    console.info('Run Ticker Job at:', new Date());
-
+		if( config.debug == true){
+			console.info('Run Ticker Job at:', new Date());
+		}
+		
 	    var date = new Date();
 	    var currentMinute = date.getHours() * 60 + date.getMinutes();
-	    console.info("Current Minute: ", currentMinute);
-
+		if( config.debug == true){
+			console.info("Current Minute: ", currentMinute);
+		}
+		
 	    if( config.enabled == true ){
 			Object.keys(devices.list()).forEach(function(key) {
 				var device = devices.list()[key];
@@ -33,36 +37,49 @@ module.exports = function(config, devices, programs, _cb) {
 			});
 	    }
 	    else{
-	    	console.info("RaspberryPI is not enable, skip.");
+			if( config.debug == true){
+				console.info("RaspberryPI is not enable, skip.");
+			}
 	    }
 	}); 
 	tickerJob.start();
 	
 	//reset programs every 00:00
 	var resetJob = cron.job("0 0 0 * * *", function(){
-		console.info('Run Reset Job at:', new Date());
-		
-		console.info('Pausing ticker Job.');
+		if( config.debug == true){
+			console.info('Run Reset Job at:', new Date());
+			console.info('Pausing ticker Job.');
+		}
+
 		tickerJob.stop();
 		
 		//re-initialize components
-		console.info('Reinitializing programs and devices.');
+		if( config.debug == true){
+			console.info('Reinitializing programs and devices.');
+		}
 		programs.init(config, devices);
 		devices.init(config, programs.active());
 
-		console.info('Restart ticker Job.');
+		if( config.debug == true){
+			console.info('Restart ticker Job.');
+		}
 		tickerJob.start();
 	}); 
 	resetJob.start();
 	
 	//re-enable SmartberryPI at 8:00 AM
 	var enableJob = cron.job("0 0 8 * * *", function(){
-		console.info('Run Enable Job at:', new Date());
+		if( config.debug == true){
+			console.info('Run Enable Job at:', new Date());
+		}
 		
 		//switch server to on
 		if( config.enabled == false ){
 			config.enabled = true;
-			console.info('RaspberryPI re-enabled.');
+			
+			if( config.debug == true){
+				console.info('RaspberryPI re-enabled.');
+			}
 		}
 	}); 
 	enableJob.start();

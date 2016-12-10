@@ -35,11 +35,18 @@
     {{title}} v. {{version}}
     
     <div class="center">
-        Master
-        <div class="toggle-button red {{#config.enabled}}toggle-button-selected{{/config.enabled}}">
+        Master<br />        
+        <div id="master" class="toggle-button red {{#config.enabled}}toggle-button-selected{{/config.enabled}}">
 	       <button></button>
         </div>
-
+        <br />
+        {{#devices}}
+            {{name}}<br />
+	        <div id="{{id}}" class="toggle-button green {{#status}}toggle-button-selected{{/status}}">
+	           <button></button>
+	        </div>
+	        <br />
+        {{/devices}}
 	</div>
 	
     <script src="/assets/js/jquery-3.1.1.min.js"></script>

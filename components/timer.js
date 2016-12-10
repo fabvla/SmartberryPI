@@ -24,15 +24,17 @@ module.exports = function(config, devices, programs, _cb) {
 			Object.keys(devices.list()).forEach(function(key) {
 				var device = devices.list()[key];
 				
-				//switch on / off / toggle based on timeline status
-				if( device.timeline()[currentMinute] == "on" ){
-					device.on();
-				}
-				else if( device.timeline()[currentMinute] == "off" ){
-					device.off();
-				}
-				else if( device.timeline()[currentMinute] == "toggle" ){
-					device.toggle();
+				//switch on / off / toggle based on timeline status and auto status
+				if( device.auto() == true ){
+					if( device.timeline()[currentMinute] == "on" ){
+						device.on();
+					}
+					else if( device.timeline()[currentMinute] == "off" ){
+						device.off();
+					}
+					else if( device.timeline()[currentMinute] == "toggle" ){
+						device.toggle();
+					}
 				}
 			});
 	    }
@@ -76,6 +78,9 @@ module.exports = function(config, devices, programs, _cb) {
 		//switch server to on
 		if( config.enabled == false ){
 			config.enabled = true;
+			
+			//reset all devices
+			devices.reset();
 			
 			if( config.debug == true){
 				console.info('RaspberryPI re-enabled.');

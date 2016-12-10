@@ -82,7 +82,7 @@ if (process.platform === 'win32') {
 process.on('SIGINT', function() {
     console.log('Closing...');
     
-    devices.off();
+    //devices.reset();
     
     console.log('Server halted.');
     

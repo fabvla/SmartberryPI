@@ -29,6 +29,10 @@ module.exports = function(app, io, config, devices, programs){
 		}
 		
 		config.enabled = true;
+		
+		//reset all devices
+		devices.reset();
+		
 		res.status(200).json(config);
 	});
 
@@ -43,8 +47,8 @@ module.exports = function(app, io, config, devices, programs){
 		
 		config.enabled = false;
 		
-		//switch off all devices
-		devices.off();
+		//reset all devices
+		devices.reset();
 
 		res.status(200).json(config);
 	});
@@ -60,10 +64,8 @@ module.exports = function(app, io, config, devices, programs){
 		
 		config.enabled = !config.enabled;
 		
-		//switch off all devices
-		if( config.enabled == false ){
-			devices.off();
-		}
+		//reset all devices
+		devices.reset();
 
 		res.status(200).json(config);
 	});
@@ -115,12 +117,15 @@ module.exports = function(app, io, config, devices, programs){
 				device = devices.get(req.params.id);
 				
 				if (req.params.status == 'on'){
+					device.auto(false);
 					device.on();
 				}
 				else if (req.params.status == 'off'){
+					device.auto(false);
 					device.off();
 				}
 				else if (req.params.status == 'toggle'){
+					device.auto(false);
 					device.toggle();
 				}
 
@@ -176,12 +181,19 @@ module.exports = function(app, io, config, devices, programs){
 	 * Serving index view
 	 */
 	app.get(['/', '/index.html'], function(req, res){
+		//fill devices array
+		var deviceArray = [];
+		Object.keys(devices.list()).forEach(function(key) {
+			var device = devices.list()[key];
+			deviceArray.push(device);
+		});
+		
 		res.render('index', {
 			cache: true,
 			title: 'SmartberryPI',
 			version: version,
 			config: config,
-			devices: devices.list(),
+			devices: deviceArray,
 			program: programs.active(),
 		});
 	});

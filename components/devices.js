@@ -50,9 +50,9 @@ exports.get = function(id) {
 
 
 /**
- * Switch off all devices
+ * Reset all devices
  */
-exports.off = function(id) {
+exports.reset = function(id) {
 	if( _config.debug == true){
 		console.log("Shutdown all devices...");
 	}
@@ -61,7 +61,7 @@ exports.off = function(id) {
 	Object.keys(devices).forEach(function(key) {
 		var device = devices[key];
 		
-		device.off();
+		device.reset();
 	});
 
 	return;

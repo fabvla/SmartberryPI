@@ -2,7 +2,7 @@
  * Device Object
  */
 
-var _id, _name, _status, _timeline, _driver, _config;
+var _id, _name, _status, _auto, _timeline, _driver, _config;
 
 
 /**
@@ -15,6 +15,7 @@ function Device(id, name, timeline, driver, config) {
 	this._id = id;
 	this._name = name;
 	this._status = -1;  //initialize with an indeterminated value, to force at the first time the switch on/off of the remote
+	this._auto = true;
 	this._timeline = timeline;
 	this._driver = driver;
 	this._config = config;
@@ -43,6 +44,22 @@ Device.prototype.name = function() {
  */
 Device.prototype.status = function() {
 	return this._status;
+};
+
+
+/**
+ * Get devices auto status
+ */
+Device.prototype.auto = function() {
+	return this._auto;
+};
+
+
+/**
+ * Get devices auto status
+ */
+Device.prototype.setAuto = function(auto) {
+	this._auto = auto;
 };
 
 
@@ -109,5 +126,19 @@ Device.prototype.toggle = function() {
 		}
 		this._driver.on();
 		this._status = true;
+	}
+};
+
+
+/**
+ * Reset device state
+ */
+Device.prototype.reset = function() {
+	this._driver.off();
+	this._status = false;
+	this.auto = true;
+	
+	if( this._config.debug == true){
+		console.log("Device", this._id, "reset(): switched to OFF and reset status");
 	}
 };

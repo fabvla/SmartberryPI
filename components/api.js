@@ -117,15 +117,15 @@ module.exports = function(app, io, config, devices, programs){
 				device = devices.get(req.params.id);
 				
 				if (req.params.status == 'on'){
-					device.auto(false);
+					device.setAuto(false);
 					device.on();
 				}
 				else if (req.params.status == 'off'){
-					device.auto(false);
+					device.setAuto(false);
 					device.off();
 				}
 				else if (req.params.status == 'toggle'){
-					device.auto(false);
+					device.setAuto(false);
 					device.toggle();
 				}
 

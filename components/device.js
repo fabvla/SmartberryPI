@@ -136,7 +136,7 @@ Device.prototype.toggle = function() {
 Device.prototype.reset = function() {
 	this._driver.off();
 	this._status = false;
-	this.auto = true;
+	this._auto = true;
 	
 	if( this._config.debug == true){
 		console.log("Device", this._id, "reset(): switched to OFF and reset status");

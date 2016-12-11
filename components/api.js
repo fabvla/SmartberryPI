@@ -115,17 +115,15 @@ module.exports = function(app, io, config, devices, programs){
 		if (typeof req.params.id !== 'undefined'){
 			if (typeof req.params.status !== 'undefined'){
 				device = devices.get(req.params.id);
+				device.setAuto(false);
 				
 				if (req.params.status == 'on'){
-					device.setAuto(false);
 					device.on();
 				}
 				else if (req.params.status == 'off'){
-					device.setAuto(false);
 					device.off();
 				}
 				else if (req.params.status == 'toggle'){
-					device.setAuto(false);
 					device.toggle();
 				}
 

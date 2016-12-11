@@ -1,3 +1,4 @@
 /config.json
 /node_modules/
 /programs/*.json
+/gpiotest/node_modules/

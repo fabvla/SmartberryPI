@@ -3,6 +3,7 @@
  */
 
 var Device = require('./device.js').Device;
+var sleep = require('sleep');
 
 var _config;
 var devices = {};
@@ -62,6 +63,7 @@ exports.reset = function(id) {
 		var device = devices[key];
 		
 		device.reset();
+		sleep.usleep(500000); //0.5 sec
 	});
 
 	return;

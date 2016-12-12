@@ -42,7 +42,7 @@ DeviceDriver.prototype.on = function() {
 		console.log("SWITCHPUSH set to ON for pin", this._pin);
 	}
 	this._pin.writeSync(1);
-	sleep.sleep(1);
+	sleep.usleep(500000); //0.5 sec
 	this._pin.writeSync(0);
 };
 
@@ -55,6 +55,6 @@ DeviceDriver.prototype.off = function() {
 		console.log("SWITCHPUSH set to OFF for pin", this._pin);
 	}
 	this._pin.writeSync(1);
-	sleep.sleep(1);
+	sleep.usleep(500000); //0.5 sec
 	this._pin.writeSync(0);
 };

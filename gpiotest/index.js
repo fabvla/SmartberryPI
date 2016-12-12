@@ -7,7 +7,7 @@ outlet_btn_off = new Gpio(27, 'out');	// Physical pin 13, http://pinout.xyz/pino
 //Switch ON outlet
 console.log("Button ON Pressed");
 outlet_btn_on.writeSync(1);
-sleep.sleep(1);
+sleep.usleep(500000); //0.5 sec
 outlet_btn_on.writeSync(0);
 console.log("Button ON Released");
 
@@ -18,6 +18,6 @@ sleep.sleep(10);
 //Switch OFF outlet
 console.log("Button OFF Pressed");
 outlet_btn_off.writeSync(1);
-sleep.sleep(1);
+sleep.usleep(500000); //0.5 sec
 outlet_btn_off.writeSync(0);
 console.log("Button OFF Released");

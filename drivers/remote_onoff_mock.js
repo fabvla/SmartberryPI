@@ -41,7 +41,7 @@ DeviceDriver.prototype.on = function() {
 	if( this._config.debug == true){
 		console.log("_pin_on.writeSync(1) for port:", this._pin_on);
 	}
-	sleep.sleep(1);
+	sleep.usleep(500000); //0.5 sec
 	if( this._config.debug == true){
 		console.log("_pin_on.writeSync(0) for port:", this._pin_on);
 	}
@@ -55,7 +55,7 @@ DeviceDriver.prototype.off = function() {
 	if( this._config.debug == true){
 		console.log("_pin_off.writeSync(1) for port:", this._pin_off);
 	}
-	sleep.sleep(1);
+	sleep.usleep(500000); //0.5 sec
 	if( this._config.debug == true){
 		console.log("_pin_off.writeSync(0) for port:", this._pin_off);
 	}

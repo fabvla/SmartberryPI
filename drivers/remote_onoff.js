@@ -43,7 +43,7 @@ DeviceDriver.prototype.on = function() {
 		console.log("ONOFF set to ON for pin", this._pin_on);
 	}
 	this._pin_on.writeSync(1);
-	sleep.sleep(1);
+	sleep.usleep(500000); //0.5 sec
 	this._pin_on.writeSync(0);
 };
 
@@ -56,6 +56,6 @@ DeviceDriver.prototype.off = function() {
 		console.log("ONOFF set to OFF for pin", this._pin_off);
 	}
 	this._pin_off.writeSync(1);
-	sleep.sleep(1);
+	sleep.usleep(500000); //0.5 sec
 	this._pin_off.writeSync(0);
 };

@@ -27,7 +27,7 @@ exports.init = function(config, programs) {
 		var DeviceDriver = require('../drivers/' + deviceConfig.driver + '.js').DeviceDriver;
 		var deviceDriver = new DeviceDriver(deviceConfig, config);
 		
-		var device = new Device(key, deviceConfig.name, deviceTimeline, deviceDriver, config);
+		var device = new Device(key, deviceConfig, deviceTimeline, deviceDriver, config);
 		
 		devices[key] = device;
 	});

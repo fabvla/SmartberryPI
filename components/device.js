@@ -2,7 +2,7 @@
  * Device Object
  */
 
-var _id, _name, _status, _auto, _timeline, _driver, _config;
+var _id, _name, _status, _auto, _timeline, _driver, _deviceConfig, _config;
 
 
 /**
@@ -11,13 +11,14 @@ var _id, _name, _status, _auto, _timeline, _driver, _config;
  * @param id
  * @returns
  */
-function Device(id, name, timeline, driver, config) {
+function Device(id, deviceConfig, timeline, driver, config) {
 	this._id = id;
-	this._name = name;
+	this._name = deviceConfig.name;
 	this._status = -1;  //initialize with an indeterminated value, to force at the first time the switch on/off of the remote
 	this._auto = true;
 	this._timeline = timeline;
 	this._driver = driver;
+	this._deviceConfig = deviceConfig;
 	this._config = config;
 }
 exports.Device = Device;
@@ -75,7 +76,7 @@ Device.prototype.timeline = function() {
  * Get devices auto status
  */
 Device.prototype.enabled = function() {
-	return this._config.enabled;
+	return this._deviceConfig.enabled;
 };
 
 

@@ -6,6 +6,7 @@
         "device_1": {
             "name": "Lamp 1",
             "driver": "remote_onoff",
+            "enabled": true,
             "options": {
                 "pin_on": 17,
                 "pin_off": 18
@@ -14,6 +15,7 @@
         "device_2": {
             "name": "Lamp 2",
             "driver": "remote_onoff",
+            "enabled": true,
             "options": {
                 "pin_on": 22,
                 "pin_off": 23
@@ -22,6 +24,7 @@
         "device_3": {
             "name": "Lamp 3",
             "driver": "remote_onoff",
+            "enabled": true,
             "options": {
                 "pin_on": 24,
                 "pin_off": 25
@@ -30,6 +33,7 @@
         "device_4": {
             "name": "Table",
             "driver": "remote_onoff",
+            "enabled": false,
             "options": {
                 "pin_on": 5,
                 "pin_off": 6
@@ -38,6 +42,7 @@
         "device_5": {
             "name": "Floor",
             "driver": "remote_onoff",
+            "enabled": false,
             "options": {
                 "pin_on": 16,
                 "pin_off": 26

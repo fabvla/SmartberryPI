@@ -8,6 +8,9 @@ module.exports = function(config, devices, programs, _cb) {
 	programs.init(config, devices);
 	devices.init(config, programs.active());
 
+	//reset all devices
+	devices.reset();
+	
 	//ticker run every minute
 	var tickerJob = cron.job("0 * * * * *", function(){
 		if( config.debug == true){
@@ -25,7 +28,7 @@ module.exports = function(config, devices, programs, _cb) {
 				var device = devices.list()[key];
 				
 				//switch on / off / toggle based on timeline status and auto status
-				if( device.auto() == true ){
+				if( device.auto() == true && device.enabled() ){
 					if( device.timeline()[currentMinute] == "on" ){
 						device.on();
 					}
@@ -61,6 +64,9 @@ module.exports = function(config, devices, programs, _cb) {
 		}
 		programs.init(config, devices);
 		devices.init(config, programs.active());
+		
+		//reset all devices
+		devices.reset();
 
 		if( config.debug == true){
 			console.info('Restart ticker Job.');

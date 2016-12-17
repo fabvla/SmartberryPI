@@ -72,6 +72,14 @@ Device.prototype.timeline = function() {
 
 
 /**
+ * Get devices auto status
+ */
+Device.prototype.enabled = function() {
+	return this._config.enabled;
+};
+
+
+/**
  * Switch ON the Device
  */
 Device.prototype.on = function() {

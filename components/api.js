@@ -183,7 +183,11 @@ module.exports = function(app, io, config, devices, programs){
 		var deviceArray = [];
 		Object.keys(devices.list()).forEach(function(key) {
 			var device = devices.list()[key];
-			deviceArray.push(device);
+			
+			//show only enabled buttons
+			if( device.enabled() ){
+				deviceArray.push(device);
+			}
 		});
 		
 		res.render('index', {

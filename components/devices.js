@@ -55,7 +55,7 @@ exports.get = function(id) {
  */
 exports.reset = function(id) {
 	if( _config.debug == true){
-		console.log("Shutdown all devices...");
+		console.log("Initialize (reset) all devices...");
 	}
 	
 	//switch off all devices

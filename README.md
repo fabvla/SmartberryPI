@@ -1,3 +1,5 @@
+![SmartberryPI Logo](https://github.com/fabvla/SmartberryPI/blob/master/others/logo/logo-128x128.jpg?raw=true "SmartberryPI Logo")
+
        ____                       _   _                          ____ ___
       / ___| _ __ ___   __ _ _ __| |_| |__   ___ _ __ _ __ _   _|  _ \_ _|
       \___ \| '_ ` _ \ / _` | '__| __| '_ \ / _ \ '__| '__| | | | |_) | |

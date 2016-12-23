@@ -130,6 +130,12 @@ Actually I only tested a remote with a pear of ON / OFF buttons for each device.
 Hardware setup
 ----
 
+Generic Schema for connections between a remote and GPIO port:
+
+![Remote Setup Schema](https://github.com/fabvla/SmartberryPI/blob/master/others/pics/smartberrypi-schema.png?raw=true "Remote Setup Schema")
+
+This is a picture of my implementation with my Etekcity kit:
+
 ![Etekcity Remote Setup](https://github.com/fabvla/SmartberryPI/blob/master/others/pics/etekcity-remote-setup.jpg?raw=true "Etekcity Remote Setup")
 
 Before plug remote to GPIO, is better to set all used PINs to 'out', like:
